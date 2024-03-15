@@ -8,13 +8,13 @@ if __name__ == "__main__":
     num1 = int(sys.argv[1])
     num2 = int(sys.argv[3])
     operator = sys.argv[2]
-    if op == '+':
+    if operator == '+':
         print("{} + {} = {}".format(num1, num2, calculator_1.add(num1, num2)))
-    elif op == '-':
+    elif operator == '-':
         print("{} - {} = {}".format(num1, num2, calculator_1.sub(num1, num2)))
-    elif op == '*':
+    elif operator == '*':
         print("{} * {} = {}".format(num1, num2, calculator_1.mul(num1, num2)))
-    elif op == '/':
+    elif operator == '/':
         print("{} / {} = {}".format(num1, num2, calculator_1.div(num1, num2)))
     else:
         print("Unknown operator. Available operators: +, -, * and /")
