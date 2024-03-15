@@ -5,8 +5,8 @@ if __name__ == "__main__":
     if len(sys.argv) != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
-    num1 = int(argv[1])
-    num2 = int(argv[3])
+    num1 = int(sys.argv[1])
+    num2 = int(sys.argv[3])
     operator = sys.argv[2]
     if op == '+':
         print("{} + {} = {}".format(num1, num2, calculator_1.add(num1, num2)))
