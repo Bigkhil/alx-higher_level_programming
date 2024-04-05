@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
-    mx = max(len(my_list_1, my_list_2))
     new_list = []
-    for i in range(0, mx):
+    for i in range(list_length):
         res = 0
         try:
             res = my_list_1[i] / my_list_2[i]
