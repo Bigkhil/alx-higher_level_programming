@@ -6,7 +6,11 @@ class Square:
     """defines a square"""
     def __init__(self, size=0, position=(0, 0)):
         self.__size = size
-        self.__position = position
+        if isinstance(position, tuple) and len(position) == 2:
+                if all(isinstance(x, int) and x >=0 for x in position):
+                    self.__position = position
+                    return
+        raise TypeError("position must be a tuple of 2 positive integers")
 
     def area(self):
         return self.__size * self.__size
