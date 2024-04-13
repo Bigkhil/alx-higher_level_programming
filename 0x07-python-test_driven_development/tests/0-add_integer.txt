@@ -11,7 +11,7 @@ Test int simple function:
     >>> add_integer(1, 2)
     3
 
-    >>> add_integer(100, -2)
+    >>> add_integer(int(100), int(-2))
     98
 
     >>> add_integer(2)
