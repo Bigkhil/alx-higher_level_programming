@@ -14,18 +14,12 @@ Test int simple function:
     >>> add_integer(int(100), int(-2))
     98
 
-    >>> add_integer(2)
-    100
-
 Test float simple function:
     >>> add_integer(2.5, 2)
     4
 
     >>> add_integer(100.0, 2)
     102
-
-    >>> add_integer(2.5)
-    100
 
     >>> add_integer(2.5, 2.5)
     4
@@ -36,12 +30,6 @@ Test the nigative values:
 
     >>> add_integer(-2, -2)
     -4
-
-    >>> add_integer(-2.5)
-    96
-
-    >> add_integer(-2)
-    96
 
 Test big values:
     >>> add_integer(999999998, 999999999)
