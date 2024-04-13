@@ -51,7 +51,7 @@ Test big values:
     -89200318917
 
 Test infinity value:
-    >>> add_integer(float('inf'), float('-inf'))
+    >>> add_integer(float(inf), float(-inf))
     Traceback (most recent call last):
     ...
     OverflowError: cannot convert float infinity to integer
