@@ -1,0 +1,75 @@
+the ''4-print-square'' module
+============================
+
+Using ``print_square`` module
+---------------------
+
+Import module:
+    >>> print_square = __import__('4-print_square').print_square
+
+Test simple square:
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Test square with size 0:   
+    >>> print_square(0)
+
+Test square with size 1:
+    >>> print_square(1)
+    #
+
+    >>> print_square(2)
+    ##
+    ##
+
+Test normal print 10:
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+Test negative number:
+    >>> print_square(-19)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be >= 0
+
+Test float number:
+    >>> print_square(15.0)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Test str:
+    >>> print_square("HIII")
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Test none value:
+    >>> print_square(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Test NaN value:
+    >>> print_square(float('nan'))
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+Missing one argument in function:
+    >>> print_square()
+    Traceback (most recent call last):
+    ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
