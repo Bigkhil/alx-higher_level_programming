@@ -5,22 +5,26 @@
 def matrix_divided(matrix, div):
     '''matrix divided function'''
     if isinstance(matrix, list):
+        if len(matrix) == 0:
+            raise TypeError(
+                    "matrix must be a matrix "
+                    "(list of lists) of integers/floats")
         for i in range(len(matrix)):
             if not isinstance(matrix[i], list):
                 raise TypeError(
-                    "matrix must be a matrix \
-                        (list of lists) of integers/floats")
-            elif len(matrix) == 0 or len(matrix[i]) == 0:
-                raise TypeError("matrix must be a\
-                                 matrix (list of lists) of integers/floats")
+                    "matrix must be a matrix "
+                    "(list of lists) of integers/floats")
+            elif len(matrix[i]) == 0:
+                raise TypeError("matrix must be a "
+                                "matrix (list of lists) of integers/floats")
             elif len(matrix[i]) != len(matrix[0]):
                 raise TypeError(
                     "Each row of the matrix must have the same size")
             else:
                 if not all(isinstance(num, (int, float)) for num in matrix[i]):
                     raise TypeError(
-                        "matrix must be a matrix \
-                            (list of lists) of integers/floats")
+                        "matrix must be a matrix "
+                        "(list of lists) of integers/floats")
     else:
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
