@@ -32,11 +32,7 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     elif div == 0:
         raise ZeroDivisionError("division by zero")
-    for i in range(len(matrix)):
-        for j in range(len(matrix[i])):
-            matrix[i][j] = matrix[i][j] / div
-            matrix[i][j] = round(matrix[i][j], 2)
-    return matrix
+    return [[round(x / div, 2) for x in row] for row in matrix]
 
 
 if __name__ == "__main__":
