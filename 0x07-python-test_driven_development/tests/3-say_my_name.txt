@@ -1,52 +1,55 @@
-the ''3-say_my_name'' module
+The ``3-say_my_name`` module
 ============================
 
-Using ``say_my_name`` module
+Using ``3-say_my_name``
 ---------------------
 
 Import module:
     >>> say_my_name = __import__('3-say_my_name').say_my_name
 
-Test simple example:
-    >>> say_my_name("John", "Smith")
-    My name is John Smith
+Test basic:
+	>>> say_my_name("hello", "there")
+	My name is hello there
 
-Test firstname only:
-    >>> say_my_name("John")
-    My name is John 
+Test firstname:
+	>>> say_my_name("hello")
+	My name is hello 
 
-Test lastname only:
-    >>> say_my_name("", "Smith")
-    My name is  Smith
+Test lastname empty:
+	>>> say_my_name("hello", "")
+	My name is hello 
 
-Test no lastname:
-    >>> say_my_name("John", "")
-    My name is John 
+Test both names empty:
+	>>> say_my_name("", "")
+	My name is  
 
-Test firstname and lastname are empty:
-    >>> say_my_name("", "")
-    My name is  
-
+Test just spaces:
 	>>> say_my_name("   ", "   ")
 	My name is        
 
-Test not str:
-    >>> say_my_name(33, "Smith")
+Test empty firstname:
+	>>> say_my_name("", "hello")
+	My name is  hello
+
+Test not str arg1:
+    >>> say_my_name(33, "hello")
     Traceback (most recent call last):
     ...
     TypeError: first_name must be a string
 
-    >>> say_my_name("John", 33)
+Test not str arg2:
+    >>> say_my_name("hello", 98)
     Traceback (most recent call last):
     ...
     TypeError: last_name must be a string
 
+Test not str arg1 arg2:
     >>> say_my_name(91, 98)
     Traceback (most recent call last):
     ...
     TypeError: first_name must be a string
 
-Test No args:
+Missing 2 args:
     >>> say_my_name()
     Traceback (most recent call last):
     ...
