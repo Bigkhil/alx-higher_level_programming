@@ -10,7 +10,7 @@ def matrix_divided(matrix, div):
                 raise TypeError(
                     "matrix must be a matrix \
                         (list of lists) of integers/floats")
-            elif len(matrix[i] != matrix[0]):
+            elif len(matrix[i]) != len(matrix[0]):
                 raise TypeError(
                     "Each row of the matrix must have the same size")
             else:
@@ -26,7 +26,10 @@ def matrix_divided(matrix, div):
     elif div == 0:
         raise ZeroDivisionError("division by zero")
     for i in range(len(matrix)):
-        for j in range(matrix[i]):
+        for j in range(len(matrix[i])):
             matrix[i][j] = matrix[i][j] / div
             matrix[i][j] = round(matrix[i][j], 2)
     return matrix
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/2-matrix_divided.txt")
