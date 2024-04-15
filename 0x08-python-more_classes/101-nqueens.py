@@ -1,86 +1,138 @@
 #!/usr/bin/python3
-"""Rectangle module"""
+import math
+import sys
+
+result = []
+
+# Program to solve N-Queens Problem
 
 
-class Rectangle:
-    """Rectangle class"""
-    print_symbol = '#'
-    number_of_instances = 0
+def solveBoard(board, row, rowmask, ldmask, rdmask):
 
-    def __init__(self, width=0, height=0):
-        if not isinstance(width, int):
-            raise TypeError("width must be an integer")
-        elif width < 0:
-            raise ValueError("width must be >= 0")
-        self.__width = width
-        if not isinstance(height, int):
-            raise TypeError("height must be an integer")
-        elif height < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = height
-        Rectangle.number_of_instances += 1
+    n = len(board)
 
-    @property
-    def width(self):
-        return self.__width
+    # All_rows_filled is a bit mask
+    # having all N bits set
+    all_rows_filled = (1 << n) - 1
 
-    @width.setter
-    def width(self, value):
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
-        self.__width = value
+    # If rowmask will have all bits set, means
+    # queen has been placed successfully
+    # in all rows and board is displayed
+    if (rowmask == all_rows_filled):
+        v = []
+        for i in board:
+            for j in range(len(i)):
+                if i[j] == 'Q':
+                    v.append(j+1)
+        result.append(v)
 
-    @property
-    def height(self):
-        return self.__height
+    # We extract a bit mask(safe) by rowmask,
+    # ldmask and rdmask. all set bits of 'safe'
+    # indicates the safe column index for queen
+    # placement of this iteration for row index(row).
+    safe = all_rows_filled & (~(rowmask |
+                                ldmask | rdmask))
 
-    @height.setter
-    def height(self, value):
-        if not isinstance(value, int):
-            raise TypeError("height must be an integer")
-        elif value < 0:
-            raise ValueError("height must be >= 0")
-        self.__height = value
+    while (safe > 0):
 
-    def area(self):
-        return self.__height * self.__width
+        # Extracts the right-most set bit
+        # (safe column index) where queen
+        # can be placed for this row
+        p = safe & (-safe)
+        col = (int)(math.log(p)/math.log(2))
+        board[row][col] = 'Q'
 
-    def perimeter(self):
-        if self.__height == 0 or self.__width == 0:
-            return 0
-        return (self.__width + self.__height) * 2
+        # This is very important:
+        # we need to update rowmask, ldmask and rdmask
+        # for next row as safe index for queen placement
+        # will be decided by these three bit masks.
 
-    def __str__(self):
-        if self.__width == 0 or self.__height == 0:
-            return ""
-        string = ""
-        for i in range(self.__height):
-            for j in range(self.__width):
-                string += str(self.print_symbol)
-            if i < (self.__height - 1):
-                string += "\n"
-        return string
+        # We have all three rowmask, ldmask and
+        # rdmask as 0 in beginning. Suppose, we are placing
+        # queen at 1st column index at 0th row. rowmask, ldmask
+        # and rdmask will change for next row as below:
 
-    def __repr__(self):
-        return f"Rectangle({self.__width}, {self.__height})"
+        # rowmask's 1st bit will be set by OR operation
+        # rowmask = 00000000000000000000000000000010
 
-    def __del__(self):
-        print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+        # ldmask will change by setting 1st
+        # bit by OR operation and left shifting
+        # by 1 as it has to block the next column
+        # of next row because that will fall on left diagonal.
+        # ldmask = 00000000000000000000000000000100
 
-    @staticmethod
-    def bigger_or_equal(rect_1, rect_2):
-        if not isinstance(rect_1, Rectangle):
-            raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(rect_2, Rectangle):
-            raise TypeError("rect_2 must be an instance of Rectangle")
-        if rect_1.area() >= rect_2.area():
-            return rect_1
-        else:
-            return rect_2
+        # rdmask will change by setting 1st bit
+        # by OR operation and right shifting by 1
+        # as it has to block the previous column
+        # of next row because that will fall on right diagonal.
+        # rdmask = 00000000000000000000000000000001
 
-    @classmethod
-    def square(cls, size=0):
-        return Rectangle(size, size)
+        # these bit masks will keep updated in each
+        # iteration for next row
+        solveBoard(board, row+1, rowmask | p, (ldmask | p) << 1,
+                   (rdmask | p) >> 1)
+
+        # Reset right-most set bit to 0 so, next
+        # iteration will continue by placing the queen
+        # at another safe column index of this row
+        safe = safe & (safe-1)
+
+        # Backtracking, replace 'Q' by ' '
+        board[row][col] = ' '
+
+# Program to print board
+
+
+def printBoard(board):
+    for row in board:
+        print("|" + "|".join(row) + "|")
+
+
+# Driver Code
+def print_result():
+    for x in range(len(result)):
+        print("[", end="")
+        for y in range(len(result[x])):
+            print("[{}, {}]".format(y, result[x][y]), end="")
+            if y < len(result[x]) - 1:
+                print(", ", end="")
+        print("]")
+
+
+def main():
+    board = []
+
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        exit(1)
+
+    try:
+        n = int(sys.argv[1])
+    except ValueError:
+        print("N must be a number")
+        exit(1)
+
+    if n < 4:
+        print("N must be at least 4")
+        exit(1)
+
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(' ')
+        board.append(row)
+
+    rowmask = 0
+    ldmask = 0
+    rdmask = 0
+    row = 0
+
+    # Function Call
+    result.clear()
+    solveBoard(board, row, rowmask, ldmask, rdmask)
+    result.sort()
+    print_result()
+
+
+if __name__ == "__main__":
+    main()
