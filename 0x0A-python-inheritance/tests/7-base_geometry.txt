@@ -2,56 +2,56 @@
 
 
 Import the class from the module:
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 Check Style:
-    >>> import pycodestyle
-    >>> import sys
+	>>> import pycodestyle
+	>>> import sys
 
 Create a StyleGuide instance:
-    >>> style_guide = pycodestyle.StyleGuide()
+	>>> style_guide = pycodestyle.StyleGuide()
 
 Define the files or directories you want to check:
-    >>> files_to_check = ['7-base_geometry.py']
+	>>> files_to_check = ['7-base_geometry.py']
 
 Check the style of the specified files:
-    >>> result = style_guide.check_files(files_to_check)
+	>>> result = style_guide.check_files(files_to_check)
 
 Check the results:
-    >>> result.total_errors
-    0
+	>>> result.total_errors
+	0
 
 Checking for module docstring:
-    >>> module_doc = __import__("7-base_geometry").__doc__
-    >>> len(module_doc) > 1
-    True
+	>>> module_doc = __import__("7-base_geometry").__doc__
+	>>> len(module_doc) > 1
+	True
 
 Checking for class docstring:
-    >>> function_doc = __import__("7-base_geometry").BaseGeometry.__doc__
-    >>> len(function_doc) > 1
-    True
+	>>> function_doc = __import__("7-base_geometry").BaseGeometry.__doc__
+	>>> len(function_doc) > 1
+	True
 
 Check for simple use:
 
-    >>> bg = BaseGeometry()
-    >>> bg.integer_validator("my_int", 12)
-    >>> bg.integer_validator("width", 89)
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("my_int", 12)
+	>>> bg.integer_validator("width", 89)
 
-    >>> try:
-    ...	bg.integer_validator("name", "John")
-    ... except Exception as e:
-    ...	print("[{}] {}".format(e.__class__.__name__, e))
-    ...
-    [TypeError] name must be an integer
-    >>> try:
-    ...	 bg.integer_validator("age", 0)
-    ... except Exception as e:
-    ...	 print("[{}] {}".format(e.__class__.__name__, e))
-    ...
-    [ValueError] age must be greater than 0
-    >>> try:
-    ...	 bg.integer_validator("distance", -4)
-    ... except Exception as e:
-    ...	 print("[{}] {}".format(e.__class__.__name__, e))
-    ...
-    [ValueError] distance must be greater than 0
+	>>> try:
+	...	bg.integer_validator("name", "John")
+	... except Exception as e:
+	...	print("[{}] {}".format(e.__class__.__name__, e))
+	...
+	[TypeError] name must be an integer
+	>>> try:
+	...	 bg.integer_validator("age", 0)
+	... except Exception as e:
+	...	 print("[{}] {}".format(e.__class__.__name__, e))
+	...
+	[ValueError] age must be greater than 0
+	>>> try:
+	...	 bg.integer_validator("distance", -4)
+	... except Exception as e:
+	...	 print("[{}] {}".format(e.__class__.__name__, e))
+	...
+	[ValueError] distance must be greater than 0
