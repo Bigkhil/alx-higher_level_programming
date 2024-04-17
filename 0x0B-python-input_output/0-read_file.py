@@ -2,8 +2,7 @@
 """read file module"""
 
 
-def read_file(filename=""):
+def read_file(filename="", encoding='utf-8'):
     """read file function"""
     with open(filename) as file:
-        for line in file:
-            print(line.strip())
+        print(file.read(), end="")
