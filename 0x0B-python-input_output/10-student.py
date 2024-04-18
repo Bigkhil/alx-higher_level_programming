@@ -14,6 +14,7 @@ class Student:
             d = self.__dict__
             ret = {}
             for x in attrs:
-                ret[x] = d[x]
+                if x in d:
+                    ret[x] = d[x]
             return ret
         return self.__dict__
