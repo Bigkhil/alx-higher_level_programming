@@ -83,7 +83,7 @@ class Rectangle(Base):
         print(((" " * self.__x) + ("#" * self.__width) + '\n') * self.__height, end="")
 
     def __str__(self):
-        return f"([Rectangle] {self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):
         if len(args) != 0:
@@ -109,3 +109,17 @@ class Rectangle(Base):
                     self.__x = kwargs['x']
                 if 'y' in kwargs:
                     self.__y = kwargs['y']
+
+    def to_dictionary(self):
+        rect_dict = {}
+        if self.x != None:
+            rect_dict['x'] = self.x
+        if self.y !=None:
+            rect_dict['y'] = self.y
+        if self.id !=None:
+            rect_dict['id'] = self.id
+        if self.height !=None:
+            rect_dict['height'] = self.height
+        if self.width !=None:
+            rect_dict['width'] = self.width
+        return rect_dict
