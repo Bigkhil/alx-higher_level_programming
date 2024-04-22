@@ -43,4 +43,16 @@ class Square(Rectangle):
                 self.x = kwargs['x']
             if 'y' in kwargs:
                 self.y = kwargs['y']
+
+    def to_dictionary(self):
+        square_dict = {}
+        if self.id != None:
+            square_dict['id'] = self.id
+        if self.x !=None:
+            square_dict['x'] = self.x
+        if self.height !=None:
+            square_dict['size'] = self.height
+        if self.y !=None:
+            square_dict['y'] = self.y
+        return square_dict
             
