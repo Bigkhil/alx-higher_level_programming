@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Square module'''
+"""Square module"""
 from .rectangle import Rectangle
 
 
@@ -8,7 +8,7 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """init method"""
         super().__init__(size, size, x, y, id)
-    
+
     def __str__(self):
         """str method"""
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.height}"
@@ -17,7 +17,7 @@ class Square(Rectangle):
     def size(self):
         """size getter"""
         return self.height
-    
+
     @size.setter
     def size(self, value):
         """size setter"""
@@ -52,13 +52,12 @@ class Square(Rectangle):
     def to_dictionary(self):
         """to_dictionary method"""
         square_dict = {}
-        if self.id != None:
+        if self.id is not None:
             square_dict['id'] = self.id
-        if self.x !=None:
+        if self.x is not None:
             square_dict['x'] = self.x
-        if self.height !=None:
+        if self.height is not None:
             square_dict['size'] = self.height
-        if self.y !=None:
+        if self.y is not None:
             square_dict['y'] = self.y
         return square_dict
-            
