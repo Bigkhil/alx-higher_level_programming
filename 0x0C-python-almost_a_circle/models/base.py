@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Base class"""
 import json
-from .rectangle import Rectangle
-from .square import Square
 
 
 class Base:
