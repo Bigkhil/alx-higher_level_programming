@@ -10,6 +10,9 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """Base Class
+        Args:
+            id (int): id of the object"""
         if id is not None:
             self.id = id
         else:
@@ -18,7 +21,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """json string jkshva dsoisahgasfn ds oiahfoihds aoih iosdanf"""
+        """converts the list of dictionaries to json string"""
         if list_dictionaries is None:
             return "[]"
         return json.dumps(list_dictionaries)
