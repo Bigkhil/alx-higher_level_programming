@@ -40,6 +40,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """from json string to list"""
         if json_string is None:
             return []
         else:
