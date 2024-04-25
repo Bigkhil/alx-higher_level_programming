@@ -2,6 +2,7 @@
 """class Rectangle"""
 from .base import Base
 
+
 class Rectangle(Base):
     """class Rectangle"""
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -32,7 +33,7 @@ class Rectangle(Base):
     def width(self):
         """width getter"""
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         """width setter"""
@@ -41,12 +42,12 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
-    
+
     @property
     def height(self):
         """height getter"""
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         """height setter"""
@@ -60,7 +61,7 @@ class Rectangle(Base):
     def x(self):
         """x getter"""
         return self.__x
-    
+
     @x.setter
     def x(self, value):
         """x setter"""
@@ -74,7 +75,7 @@ class Rectangle(Base):
     def y(self):
         """y getter"""
         return self.__y
-    
+
     @y.setter
     def y(self, value):
         """y setter"""
@@ -91,11 +92,13 @@ class Rectangle(Base):
     def display(self):
         """display method"""
         print("\n" * self.__y, end="")
-        print(((" " * self.__x) + ("#" * self.__width) + '\n') * self.__height, end="")
+        print(((" " * self.__x) +
+               ("#" * self.__width) + '\n') * self.__height, end="")
 
     def __str__(self):
         """str method"""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return f"[Rectangle]({self.id}) {self.__x}/{self.__y}
+        - {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):
         """update method"""
@@ -126,14 +129,14 @@ class Rectangle(Base):
     def to_dictionary(self):
         """to_dictionary method"""
         rect_dict = {}
-        if self.x != None:
+        if self.x is not None:
             rect_dict['x'] = self.x
-        if self.y !=None:
+        if self.y is notNone:
             rect_dict['y'] = self.y
-        if self.id !=None:
+        if self.id is not None:
             rect_dict['id'] = self.id
-        if self.height !=None:
+        if self.height is not None:
             rect_dict['height'] = self.height
-        if self.width !=None:
+        if self.width is not None:
             rect_dict['width'] = self.width
         return rect_dict
