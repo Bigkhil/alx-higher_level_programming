@@ -131,7 +131,7 @@ class Rectangle(Base):
         rect_dict = {}
         if self.x is not None:
             rect_dict['x'] = self.x
-        if self.y is notNone:
+        if self.y is not None:
             rect_dict['y'] = self.y
         if self.id is not None:
             rect_dict['id'] = self.id
