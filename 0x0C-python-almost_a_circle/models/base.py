@@ -20,23 +20,9 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """to json string"""
-        if list_dictionaries is None or len(list_dictionaries) == 0:
-            return ("[]")
-        return (json.dumps(list_dictionaries))
-
-    @classmethod
-    def save_to_file(cls, list_objs):
-        """saves the json string to file"""
-        if list_objs is not None:
-            if isinstance(list_objs[0], Rectangle):
-                with open('Rectangle.json', 'w') as file:
-                    for i in list_objs:
-                        file.write(cls.to_json_string(i))
-            else:
-                with open('Square.json', 'w') as file:
-                    for i in list_objs:
-                        file.write(cls.to_json_string(i))
-        else:
-            pass
+        if list_dictionaries is None:
+            return "[]"
+        return json.dumps(list_dictionaries)
