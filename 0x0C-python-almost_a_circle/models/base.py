@@ -7,6 +7,7 @@ from .square import Square
 
 class Base:
     """class Base doc"""
+
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -19,6 +20,7 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """converts the list of dictionaries to json string
         Args:
