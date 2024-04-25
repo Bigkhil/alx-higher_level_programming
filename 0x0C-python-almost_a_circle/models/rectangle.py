@@ -1,12 +1,19 @@
 #!/usr/bin/python3
-from .base import Base
 """class Rectangle"""
+from .base import Base
 
 
 class Rectangle(Base):
     """class Rectangle"""
     def __init__(self, width, height, x=0, y=0, id=None):
-        """init function"""
+        """Rectangle class
+        Args:
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+            x (int): x coordinate of the rectangle
+            y (int): y coordinate of the rectangle
+            id (int): id of the rectangle"""
+
         super().__init__(id)
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
