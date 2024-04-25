@@ -16,12 +16,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """converts the list of dictionaries into json string"""
         if list_dictionaries == None:
             return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """saves the json string to file"""
         if list_objs != None:
             if isinstance(list_objs[0], Rectangle):
                 with open('Rectangle.json', 'w') as file:
