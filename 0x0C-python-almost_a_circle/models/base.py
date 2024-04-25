@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""class base"""
+"""Base class"""
 import json
 from .rectangle import Rectangle
 from .square import Square
 
 
 class Base:
-    """class Base doc"""
+    """Base class"""
 
     __nb_objects = 0
 
