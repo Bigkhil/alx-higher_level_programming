@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base class"""
 import json
+import os
 
 
 class Base:
@@ -56,3 +57,23 @@ class Base:
             instance = cls(5)
         instance.update(**dictionary)
         return instance
+
+    @classmethod
+    def load_from_file(cls):
+        """returns list of instances from class_name.json"""
+        list_dictionaries = []
+        list_instances = []
+        if os.path.exist("Rectangle.json"):
+            with open("Rectangle.json", 'r') as file:
+                list_dictionaries = cls.from_json_string(file.read())
+            for i in list_dictionaries:
+                list_instances.append(**i)
+            return list_instances
+        elif os.path.exist("Square.json"):
+            with open("Square.json", 'r') as file:
+                list_dictionaries = cls.from_json_string(file.read())
+            for i in list_dictionaries:
+                list_instances.append(**i)
+            return list_instances
+        else:
+            return []
