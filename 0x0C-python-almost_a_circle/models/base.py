@@ -51,8 +51,8 @@ class Base:
         """create instance method"""
         instance = None
         if cls.__name__ == "Rectangle":
-            instance = cls(None, None, None, None, None)
+            instance = cls(5, 5, 5, 5, 5)
         else:
-            instance = cls(None, None, None, None, None)
-        instance.update(None, dictionary)
+            instance = cls(5, 5, 5, 5, 5)
+        instance.update(**dictionary)
         return instance
