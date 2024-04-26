@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-""" 5-main """
+""" 16-main """
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
 
-    r1 = Rectangle(4, 6, 2, 1, 12)
-    print(r1)
-
-    r2 = Rectangle(5, 5, 1)
-    print(r2)
+    list_input = [
+        {'id': 89, 'width': 10, 'height': 4}, 
+        {'id': 7, 'width': 1, 'height': 7}
+    ]
+    json_list_input = Rectangle.to_json_string(list_input)
+    list_output = Rectangle.from_json_string(json_list_input)
+    print("[{}] {}".format(type(list_input), list_input))
+    print("[{}] {}".format(type(json_list_input), json_list_input))
+    print("[{}] {}".format(type(list_output), list_output))
