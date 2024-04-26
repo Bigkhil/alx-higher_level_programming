@@ -2,6 +2,7 @@
 """Base class"""
 import json
 import os
+import csv
 
 
 class Base:
@@ -72,3 +73,39 @@ class Base:
             return list_instances
         else:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save to file csv"""
+        mycsv = ""
+        flag = -1
+        for o in list_objs:
+            if o.__class__.__name__ == "Rectangle":
+                if flag == -1:
+                    mycsv += "id,width,height,x,y\n"
+                    flag = 0
+
+                mycsv += f"{o.id},{o.width},{o.height},{o.x},{o.y}\n"
+
+            else:
+                if flag == -1:
+                    mycsv += "id,size,x,y\n"
+                    flag = 0
+
+                mycsv += f"{o.id},{o.size},{o.x},{o.y}\n"
+
+        with open(cls.__name__+".csv", encoding="utf-8", mode="w") as file:
+            file.write(mycsv[:-1])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load from file csv"""
+        data = []
+        with open(cls.__name__+".csv", encoding="utf-8", mode="r") as file:
+            csv_reader = csv.DictReader(file)
+            for row in csv_reader:
+                # Convert values to integers
+                for key in row:
+                    row[key] = int(row[key])
+                data.append(row)
+        return list(map(lambda obj: cls.create(**obj), data))
