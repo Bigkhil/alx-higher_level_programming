@@ -63,17 +63,17 @@ class Base:
         """returns list of instances from class_name.json"""
         list_dictionaries = []
         list_instances = []
-        if os.path.exist("Rectangle.json"):
+        if os.path.exists("Rectangle.json"):
             with open("Rectangle.json", 'r') as file:
                 list_dictionaries = cls.from_json_string(file.read())
             for i in list_dictionaries:
-                list_instances.append(**i)
+                list_instances.append(cls.create(**i))
             return list_instances
-        elif os.path.exist("Square.json"):
+        elif os.path.exists("Square.json"):
             with open("Square.json", 'r') as file:
                 list_dictionaries = cls.from_json_string(file.read())
             for i in list_dictionaries:
-                list_instances.append(**i)
+                list_instances.append(cls.create(**i))
             return list_instances
         else:
             return []
