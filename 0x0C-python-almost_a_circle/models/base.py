@@ -50,6 +50,9 @@ class Base:
     def create(cls, **dictionary):
         """create instance method"""
         instance = None
-        instance = cls(5, 5, 5, 5, 5)
+        if cls.__name__ == "Rectangle":
+            instance = cls(5, 5)
+        else:
+            instance = cls(5)
         instance.update(**dictionary)
         return instance
