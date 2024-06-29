@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''this script should list all states in the database that start with N'''
+'''this script should list all cities related to a specific state'''
 import MySQLdb
 import sys
 
@@ -16,7 +16,7 @@ def main():
                    ORDER BY `cities`.`id`".format(sys.argv[4]))
     rows = cursor.fetchall()
     for i in range(len(rows) - 1):
-        print(rows[i][0] + ',', end="")
+        print(rows[i][0] + ', ', end="")
     print(rows[-1][0])
     conn.close()
 
