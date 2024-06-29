@@ -15,11 +15,10 @@ def main():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    try:
-        rows = session.query(State).filter(State.name == "{}".format
-                                           (sys.argv[4])).one()
+    rows = session.query(State).filter(State.name == sys.argv[4]).one()
+    if rows:
         print(rows.id)
-    except NoResultFound:
+    else:
         print("Not found")
 
 
