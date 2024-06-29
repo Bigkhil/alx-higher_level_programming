@@ -12,10 +12,11 @@ def main():
     cursor.execute("SELECT `cities`.`name`\
                    FROM `cities`\
                    JOIN `states` ON `cities`.`state_id` = `states`.`id`\
-                   WHERE `states`.`name` = {}".format(sys.argv[4]))
+                   WHERE `states`.`name` = {}\
+                   ORDER BY `cities`.`id`".format(sys.argv[4]))
     rows = cursor.fetchall()
     for i in len(rows) - 2:
-        print(rows[i] + ',',end="")
+        print(rows[i] + ',', end="")
     print(rows[len[rows] - 1])
     conn.close()
 
