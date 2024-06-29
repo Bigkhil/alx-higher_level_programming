@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''this script should list all states in the database'''
+'''this script should list all states in the database that start with N'''
 import MySQLdb
 import sys
 
@@ -9,7 +9,7 @@ def main():
     conn = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
                            passwd=sys.argv[2], db=sys.argv[3])
     cursor = conn.cursor()
-    cursor.execute("select * from states where states.name like 'N%' ordery by states.id ASC;")
+    cursor.execute("select * from states where `name` LIKE 'N%' ordery by `id` ASC;")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
