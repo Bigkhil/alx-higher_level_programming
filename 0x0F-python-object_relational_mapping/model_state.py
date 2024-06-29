@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''this script creates a state model using sqlalchemy'''
 import MySQLdb
-from sqlalchemy import create_engine, VARCHAR, Column, Integer, String
+from sqlalchemy import create_engine, VARCHAR, Column, Integer, String, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
