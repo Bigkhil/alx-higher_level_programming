@@ -15,7 +15,9 @@ def main():
                    WHERE `states`.`name` = {}\
                    ORDER BY `cities`.`id`".format(sys.argv[4]))
     rows = cursor.fetchall()
-    print(", ".join([row[0] for row in rows]))
+    for i in range(len(rows) - 2):
+        print(rows[i] + ',', end="")
+    print(rows[len(rows) - 1])
     conn.close()
 
 
