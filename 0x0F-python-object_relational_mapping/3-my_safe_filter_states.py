@@ -10,7 +10,8 @@ def main():
                            passwd=sys.argv[2], db=sys.argv[3])
     cursor = conn.cursor()
     param = '%' + sys.arg[4] + '%'
-    cursor.execute("SELECT * from states WHERE `name` LIKE BINARY %s;", (param, ))
+    cursor.execute("SELECT * from states WHERE `name` LIKE BINARY %s;",
+                   (param, ))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
