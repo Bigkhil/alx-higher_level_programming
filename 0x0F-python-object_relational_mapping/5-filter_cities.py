@@ -12,8 +12,8 @@ def main():
     cursor.execute("SELECT `cities`.`name`\
                    FROM `cities`\
                    JOIN `states` ON `cities`.`state_id` = `states`.`id`\
-                   WHERE `states`.`name` = {}\
-                   ORDER BY `cities`.`id`".format(sys.argv[4]))
+                   WHERE `states`.`name` = %s\
+                   ORDER BY `cities`.`id`", (sys.argv[4], ))
     rows = cursor.fetchall()
     print(", ".join([row[0] for row in rows]))
     conn.close()
