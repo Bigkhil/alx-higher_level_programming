@@ -11,7 +11,7 @@ def main():
     cursor = conn.cursor()
     cursor.execute("SELECT `cities`.`id`, `cities`.`name`, `states`.`name`\
                    FROM `cities`\
-                   JOIN `states` ON `states`.`state_id` = `cities`.`id`\
+                   JOIN `states` ON `cities`.`state_id` = `states`.`id`\
                    ORDER BY `cities`.`id`")
     rows = cursor.fetchall()
     for row in rows:
