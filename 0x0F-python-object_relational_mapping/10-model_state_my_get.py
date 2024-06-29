@@ -15,7 +15,7 @@ def main():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    rows = session.query(State).filter(State.name == sys.argv[4]).one()
+    rows = session.query(State).filter(State.name == sys.argv[4]).first()
     if rows:
         print(rows.id)
     else:
