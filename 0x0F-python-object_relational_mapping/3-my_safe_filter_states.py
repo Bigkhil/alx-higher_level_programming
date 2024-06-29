@@ -9,8 +9,8 @@ def main():
     conn = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
                            passwd=sys.argv[2], db=sys.argv[3])
     cursor = conn.cursor()
-    param = '%' + sys.arg[4] + '%'
-    cursor.execute("SELECT * from states WHERE `name` LIKE BINARY %s;",
+    param = sys.arg[4]
+    cursor.execute("SELECT * from states WHERE `name` = %s;",
                    (param, ))
     rows = cursor.fetchall()
     for row in rows:
