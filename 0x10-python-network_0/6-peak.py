@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-# this script gets the peak from an array
+'''this script gets the peak from an array'''
+
+
 def find_peak(list_of_integers):
     '''this fucntion gets a peak from a list of integers'''
     first = 0
