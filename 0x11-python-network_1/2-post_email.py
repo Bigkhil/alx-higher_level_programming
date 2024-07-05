@@ -16,7 +16,7 @@ def main():
     req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
         body = response.read()
-        print(body.decode())
+        print(f"Your email is: {body.getheader('email')}")
 
 
 if __name__ == "__main__":
