@@ -10,8 +10,8 @@ def main():
     and prints the response using requests module
     '''
     url = sys.argv[1]
-    email = {f"email: {sys.argv[2]}"}
-    response = requests.post(url, email)
+    email = {"email:": sys.argv[2]}
+    response = requests.post(url, data=email)
     print(response.text)
 
 
