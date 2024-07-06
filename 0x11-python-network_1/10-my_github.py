@@ -11,7 +11,8 @@ def main():
     '''
     user_name = argv[1]
     pat = argv[2]
-    response = requests.get("https://api.github.com/user", auth=(user_name, pat))
+    url = "https://api.github.com/user"
+    response = requests.get(url, auth=(user_name, pat))
     result = response.json()
     print(result.get('id'))
 
