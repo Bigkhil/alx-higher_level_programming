@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''this script prints all city objects from the database'''
 import MySQLdb
 import sys
