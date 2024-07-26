@@ -17,7 +17,7 @@ def main():
     Session = sessionmaker(bind=engine)
     session = Session()
     rows = session.query(City, State).filter(
-            City.state_id == State.id).order_by(State.id).all()
+            City.state_id == State.id).order_by(City.id).all()
     for row in rows:
         print(f"{row.State.name}: ({row.City.id}) {row.City.name}")
     session.close()
