@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-'''
-this script creates the City class
-'''
+'''this script creates the City class'''
 from model_state import Base, State
 from sqlalchemy import VARCHAR, Column, Integer, String
 
