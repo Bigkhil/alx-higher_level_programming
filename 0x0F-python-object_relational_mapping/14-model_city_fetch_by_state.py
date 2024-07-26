@@ -20,6 +20,7 @@ def main():
             City.state_id == State.id).order_by(State.id).all()
     for row in rows:
         print(f"{row.tate.name}: ({row.State.id}) {row.City.name}")
+    session.close()
 
 
 if __name__ == "__main__":
