@@ -1,27 +1,29 @@
 #!/usr/bin/python3
-'''this script prints all city objects from the database'''
-import MySQLdb
-import sys
+'''
+11-model_state_insert.py: script that adds the State object "Louisiana" to the
+database hbtn_0e_6_usa
+Usage: ./11-model_state_insert.py <mysql username> <mysql password>
+<database name>
+'''
+
+from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import create_engine
+from sys import argv
 from model_state import Base, State
 from model_city import City
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
 
-
-def main():
-    '''main function to execute when using the script'''
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-        sys.argv[1], sys.argv[2], sys.argv[3]
-                                   ), pool_pre_ping=True)
+if __name__ == "__main__":
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
+                           format(argv[1], argv[2], argv[3]),
+                           pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    rows = session.query(City, State).filter(
-            City.state_id == State.id).order_by(State.id).all()
-    for row in rows:
-        print(f"{row.tate.name}: ({row.State.id}) {row.City.name}")
+
+    results = session.query(City, State).filter(
+        State.id == City.state_id).order_by(State.id).all()
+
+    for row in results:
+        print('{}: ({}) {}'.format(row.State.name, row.City.id, row.City.name))
+
     session.close()
-
-
-if __name__ == "__main__":
-    main()
